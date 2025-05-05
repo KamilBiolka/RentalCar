@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentalCar.AddCarPage"
+             Title="Dodaj Samochód">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Marka" />
+            <Entry x:Name="BrandEntry" Placeholder="Np. Toyota" />
+
+            <Label Text="Model" />
+            <Entry x:Name="ModelEntry" Placeholder="Np. Corolla" />
+
+            <Label Text="Rok Produkcji" />
+            <Entry x:Name="YearEntry" Keyboard="Numeric" Placeholder="Np. 2020" />
+
+            <Button Text="Dodaj Samochód" Clicked="OnAddCarClicked" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentalCar.MainPage"
+             x:Name="MainPageRef"
+             Title="Wypożyczalnia Samochodów">
+
+    <StackLayout Padding="10">
+        <Label Text="Lista Samochodów" FontSize="24" HorizontalOptions="Center" />
+        <Button Text="Dodaj Samochód" Clicked="OnAddCarClicked" />
+        <CollectionView x:Name="CarListView" ItemsSource="{Binding Cars}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <StackLayout>
+                            <Label Text="{Binding Brand}" FontSize="18" />
+                            <Label Text="{Binding Model}" FontSize="14" />
+                            <Label Text="{Binding Year}" FontSize="14" />
+                            <Label Text="{Binding IsRented, Converter={StaticResource BoolToStatusConverter}}" FontAttributes="Italic" />
+
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Button Text="Wypożycz" 
+                                        IsEnabled="{Binding IsRented, Converter={StaticResource InvertBoolConverter}}"
+                                        Clicked="RentCar_Clicked" />
+
+                                <Button Text="Zwróć" 
+                                        IsEnabled="{Binding IsRented}"
+                                        Clicked="ReturnCar_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

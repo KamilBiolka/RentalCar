@@ -1,0 +1,15 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:RentalCar.Converters"
+             x:Class="RentalCar.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <conv:BoolToStatusConverter x:Key="BoolToStatusConverter" />
+            <conv:InvertBoolConverter x:Key="InvertBoolConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
