@@ -1,6 +1,8 @@
 ﻿using RentalCar;
 using System.Collections.ObjectModel;
 using RentalCar.ViewModels;
+using CommunityToolkit.Maui.Views;
+
 
 namespace RentalCar;
 
@@ -26,14 +28,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void RentCar_Clicked(object sender, EventArgs e)
-    {
-        if (sender is Button button && button.BindingContext is Car car)
-        {
-            await _service.RentCarAsync(car.Id);
-            RefreshList();
-        }
-    }
 
     private async void ReturnCar_Clicked(object sender, EventArgs e)
     {
@@ -56,5 +50,25 @@ public partial class MainPage : ContentPage
     private async void OnAddCarClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new AddCarPage(_service));
+    }
+
+    private CarRentalService carRentalService = new();
+    private async void RentCar_Clicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var car = (Car)button.BindingContext;
+
+        var popup = new ClientDataPopup();
+        var result = await MainPageRef.ShowPopupAsync(popup) as Tuple<string, string, string>;
+
+        if (result != null)
+        {
+            car.IsRented = true;
+            car.RentedByName = result.Item1;
+            car.RentedBySurname = result.Item2;
+            car.RentedByPESEL = result.Item3;
+
+            await carRentalService.SaveCarsAsync();
+        }
     }
 }

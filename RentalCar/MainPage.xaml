@@ -3,34 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentalCar.MainPage"
              x:Name="MainPageRef"
-             Title="Wypożyczalnia Samochodów">
+             Title="Wypożyczalnia samochodów">
 
-    <StackLayout Padding="10">
-        <Label Text="Lista Samochodów" FontSize="24" HorizontalOptions="Center" />
-        <Button Text="Dodaj Samochód" Clicked="OnAddCarClicked" />
-        <CollectionView x:Name="CarListView" ItemsSource="{Binding Cars}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="Gray" Padding="10" Margin="5">
-                        <StackLayout>
-                            <Label Text="{Binding Brand}" FontSize="18" />
-                            <Label Text="{Binding Model}" FontSize="14" />
-                            <Label Text="{Binding Year}" FontSize="14" />
-                            <Label Text="{Binding IsRented, Converter={StaticResource BoolToStatusConverter}}" FontAttributes="Italic" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Lista samochodów" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   Margin="0,10" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Button Text="Wypożycz" 
-                                        IsEnabled="{Binding IsRented, Converter={StaticResource InvertBoolConverter}}"
-                                        Clicked="RentCar_Clicked" />
+            <Button Text="Dodaj samochód" 
+                    Clicked="OnAddCarClicked" 
+                    HorizontalOptions="FillAndExpand"
+                    WidthRequest="200"
+                    Margin="0,0,0,10" />
 
-                                <Button Text="Zwróć" 
-                                        IsEnabled="{Binding IsRented}"
-                                        Clicked="ReturnCar_Clicked" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+            <CollectionView x:Name="CarListView" ItemsSource="{Binding Cars}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Margin="0,0,0,20">
+                            <Frame BorderColor="Gray" Padding="15" CornerRadius="10"
+                                   BackgroundColor="#f8f8f8" HasShadow="True" Margin="0,8">
+                                <Grid RowSpacing="8" ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Brand}" FontSize="18" />
+                                    <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Model}" FontSize="14" />
+                                    <Label Grid.Row="2" Grid.Column="0" Text="{Binding Year}" FontSize="14" />
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding IsRented, Converter={StaticResource BoolToStatusConverter}}" 
+                                           FontAttributes="Italic"
+                                           HorizontalOptions="End"/>
+
+                                    
+                                    <Label Grid.Row="3" Grid.ColumnSpan="2" 
+                                           Text="{Binding RentedByName}" 
+                                           IsVisible="{Binding IsRented}" 
+                                           FontAttributes="Bold" />
+
+                                    <Label Grid.Row="4" Grid.ColumnSpan="2" 
+                                           Text="{Binding RentedBySurname}" 
+                                           IsVisible="{Binding IsRented}" 
+                                           Margin="0,2,0,0" />
+
+                                    <Label Grid.Row="5" Grid.ColumnSpan="2" 
+                                           Text="{Binding RentedByPESEL}" 
+                                           IsVisible="{Binding IsRented}" 
+                                           FontSize="12"
+                                           TextColor="Gray"
+                                           Margin="0,2,0,10"/>
+
+                                    <Button Grid.Row="6" Grid.Column="0"
+                                            Text="Wypożycz" 
+                                            IsEnabled="{Binding IsRented, Converter={StaticResource InvertBoolConverter}}"
+                                            Clicked="RentCar_Clicked"
+                                            HorizontalOptions="Fill" />
+
+                                    <Button Grid.Row="6" Grid.Column="1"
+                                            Text="Zwróć" 
+                                            IsEnabled="{Binding IsRented}"
+                                            Clicked="ReturnCar_Clicked"
+                                            HorizontalOptions="Fill" />
+                                </Grid>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -2,20 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentalCar.AddCarPage"
-             Title="Dodaj Samochód">
+             Title="Dodaj samochód">
 
     <ScrollView>
-        <StackLayout Padding="20" Spacing="15">
-            <Label Text="Marka" />
-            <Entry x:Name="BrandEntry" Placeholder="Np. Toyota" />
+        <Grid Padding="20" RowSpacing="15" ColumnSpacing="10"
+              HorizontalOptions="Center">
 
-            <Label Text="Model" />
-            <Entry x:Name="ModelEntry" Placeholder="Np. Corolla" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <Label Text="Rok Produkcji" />
-            <Entry x:Name="YearEntry" Keyboard="Numeric" Placeholder="Np. 2020" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
 
-            <Button Text="Dodaj Samochód" Clicked="OnAddCarClicked" />
-        </StackLayout>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="Marka:" VerticalTextAlignment="Center" />
+            <Entry Grid.Row="0" Grid.Column="1" x:Name="BrandEntry" Placeholder="Np. Toyota" />
+
+            
+            <Label Grid.Row="1" Grid.Column="0" Text="Model:" VerticalTextAlignment="Center" />
+            <Entry Grid.Row="1" Grid.Column="1" x:Name="ModelEntry" Placeholder="Np. Corolla" />
+
+            
+            <Label Grid.Row="2" Grid.Column="0" Text="Rok produkcji:" VerticalTextAlignment="Center" />
+            <Entry Grid.Row="2" Grid.Column="1" x:Name="YearEntry" Placeholder="Np. 2020" Keyboard="Numeric" />
+
+            
+            <Button Grid.Row="3" Grid.ColumnSpan="2"
+                    Text="Dodaj samochód"
+                    Clicked="OnAddCarClicked"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0" />
+        </Grid>
     </ScrollView>
 </ContentPage>

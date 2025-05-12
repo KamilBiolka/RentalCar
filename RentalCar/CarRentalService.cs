@@ -10,7 +10,7 @@ namespace RentalCar
 {
     public class CarRentalService
     {
-        private readonly string filePath = Path.Combine(FileSystem.AppDataDirectory, "cars.json");
+        private readonly string filePath = @"C:\Users\kamil\nprojekt\RentalCar\RentalCar\cars.json";
         public List<Car> Cars { get; private set; } = new();
 
         public async Task LoadCarsAsync()
@@ -24,6 +24,7 @@ namespace RentalCar
 
         public async Task SaveCarsAsync()
         {
+
             string json = JsonSerializer.Serialize(Cars);
             await File.WriteAllTextAsync(filePath, json);
         }
