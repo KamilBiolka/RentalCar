@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using CommunityToolkit.Maui.Views;
 
 namespace RentalCar
@@ -13,17 +14,41 @@ namespace RentalCar
             InitializeComponent();
         }
 
-        private void OnConfirmClicked(object sender, EventArgs e)
+        private async void OnConfirmClicked(object sender, EventArgs e)
         {
-            ClientName = NameEntry.Text;
-            ClientSurname = SurnameEntry.Text;
-            ClientPesel = PeselEntry.Text;
-
-            Close(new Tuple<string, string, string>(ClientName, ClientSurname, ClientPesel));
-
+            string name = NameEntry.Text?.Trim();
+            string surname = SurnameEntry.Text?.Trim();
+            string pesel = PeselEntry.Text?.Trim();
 
             
-            this.Close();
+            Regex nameRegex = new Regex(@"^[A-Za-z•π∆Ê Í£≥—Ò”ÛåúèüØø]{2,}$");
+            Regex peselRegex = new Regex(@"^\d{11}$");
+
+            
+            if (string.IsNullOrWhiteSpace(name) || !nameRegex.IsMatch(name))
+            {
+                await Application.Current.MainPage.DisplayAlert("B≥πd", "ImiÍ musi zawieraÊ tylko litery (min. 2 znaki).", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(surname) || !nameRegex.IsMatch(surname))
+            {
+                await Application.Current.MainPage.DisplayAlert("B≥πd", "Nazwisko musi zawieraÊ tylko litery (min. 2 znaki).", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(pesel) || !peselRegex.IsMatch(pesel))
+            {
+                await Application.Current.MainPage.DisplayAlert("B≥πd", "PESEL musi mieÊ dok≥adnie 11 cyfr.", "OK");
+                return;
+            }
+
+            
+            ClientName = name;
+            ClientSurname = surname;
+            ClientPesel = pesel;
+
+            Close(new Tuple<string, string, string>(ClientName, ClientSurname, ClientPesel));
         }
     }
 }

@@ -1,1 +1,1 @@
-[]
+[{"Id":"21f0ec24-2740-4ba1-b7d2-0cd38e928680","Brand":"Toyota","Model":"Corolla","Year":2020,"IsRented":false,"RentedByName":"Jan","RentedBySurname":"Rowak","RentedByPESEL":"01234567891"},{"Id":"887e3ac8-183a-4889-b8a2-51b4f9809ec0","Brand":"Skoda","Model":"Octavia","Year":2018,"IsRented":false,"RentedByName":"na","RentedBySurname":"aee","RentedByPESEL":"12356781111"}]
