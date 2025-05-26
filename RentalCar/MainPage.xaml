@@ -33,6 +33,8 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -46,7 +48,6 @@
                                            FontAttributes="Italic"
                                            HorizontalOptions="End"/>
 
-                                    
                                     <Label Grid.Row="3" Grid.ColumnSpan="2" 
                                            Text="{Binding RentedByName}" 
                                            IsVisible="{Binding IsRented}" 
@@ -75,6 +76,17 @@
                                             IsEnabled="{Binding IsRented}"
                                             Clicked="ReturnCar_Clicked"
                                             HorizontalOptions="Fill" />
+
+                                    <Button Grid.Row="7" Grid.ColumnSpan="2"
+                                            Text="Historia"
+                                            Clicked="ShowHistory_Clicked"
+                                            BackgroundColor="#e0e0e0"
+                                            TextColor="Black"
+                                            FontSize="14"
+                                            HeightRequest="50"
+                                            Padding="10"
+                                            WidthRequest="200"
+                                            Margin="0,10,0,0"/>
                                 </Grid>
                             </Frame>
                         </VerticalStackLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="RentalCar.RentalHistoryPopup">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Historia wypożyczeń"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+            <CollectionView x:Name="HistoryListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" BorderColor="LightGray" CornerRadius="8" BackgroundColor="White">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding ClientName}" FontAttributes="Bold" />
+                                <Label Text="{Binding ClientSurname}" />
+                                <Label Text="{Binding ClientPesel}" FontSize="12" TextColor="Gray" />
+                                <Label Text="{Binding RentDate, StringFormat='Wypożyczono: {0:dd.MM.yyyy HH:mm}'}" />
+                                <Label Text="{Binding ReturnDate, StringFormat='Zwrócono: {0:dd.MM.yyyy HH:mm}'}"
+                                       IsVisible="{Binding ReturnDate}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Zamknij"
+                    Clicked="OnCloseClicked"
+                    BackgroundColor="#cccccc"
+                    TextColor="Black"
+                    FontSize="14"
+                    HeightRequest="50"
+                    Padding="10"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Margin="0,10,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</toolkit:Popup>

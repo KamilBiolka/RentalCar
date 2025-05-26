@@ -9,6 +9,7 @@ namespace RentalCar
 {
     public class Car : INotifyPropertyChanged
     {
+        public List<RentalHistoryEntry> RentalHistory { get; set; } = new List<RentalHistoryEntry>();
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         private string brand;
