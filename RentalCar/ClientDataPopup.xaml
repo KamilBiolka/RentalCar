@@ -25,7 +25,9 @@
             <Button Text="Zatwierdź"
                     Clicked="OnConfirmClicked"
                     HorizontalOptions="Fill"
-                    Margin="0,10,0,0" />
+                    Margin="0,10,0,0"
+                    TextColor="White"
+                    BackgroundColor="#7341F5"/>
         </StackLayout>
 
     </Frame>

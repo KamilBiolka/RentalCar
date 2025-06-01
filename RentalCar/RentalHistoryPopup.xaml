@@ -30,8 +30,8 @@
 
             <Button Text="Zamknij"
                     Clicked="OnCloseClicked"
-                    BackgroundColor="#cccccc"
-                    TextColor="Black"
+                    BackgroundColor="#7341F5"
+                    TextColor="White"
                     FontSize="14"
                     HeightRequest="50"
                     Padding="10"

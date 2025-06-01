@@ -16,13 +16,14 @@
                     Clicked="OnAddCarClicked" 
                     HorizontalOptions="FillAndExpand"
                     WidthRequest="200"
-                    Margin="0,0,0,10" />
+                    Margin="0,0,0,10"
+                    BackgroundColor="#7341F5"/>
 
             <CollectionView x:Name="CarListView" ItemsSource="{Binding Cars}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Margin="0,0,0,20">
-                            <Frame BorderColor="Gray" Padding="15" CornerRadius="10"
+                            <Frame BorderColor="#7341F5" Padding="15" CornerRadius="10"
                                    BackgroundColor="#f8f8f8" HasShadow="True" Margin="0,8">
                                 <Grid RowSpacing="8" ColumnSpacing="10">
                                     <Grid.RowDefinitions>
@@ -69,24 +70,29 @@
                                             Text="Wypożycz" 
                                             IsEnabled="{Binding IsRented, Converter={StaticResource InvertBoolConverter}}"
                                             Clicked="RentCar_Clicked"
-                                            HorizontalOptions="Fill" />
+                                            HorizontalOptions="Fill"
+                                            TextColor="White"
+                                            BackgroundColor="#9298FF"/>
 
                                     <Button Grid.Row="6" Grid.Column="1"
                                             Text="Zwróć" 
                                             IsEnabled="{Binding IsRented}"
                                             Clicked="ReturnCar_Clicked"
-                                            HorizontalOptions="Fill" />
+                                            TextColor="White"
+                                            HorizontalOptions="Fill"
+                                            BackgroundColor="#735FF5"/>
 
                                     <Button Grid.Row="7" Grid.ColumnSpan="2"
                                             Text="Historia"
                                             Clicked="ShowHistory_Clicked"
-                                            BackgroundColor="#e0e0e0"
-                                            TextColor="Black"
+                                            BackgroundColor="#7341F5"
+                                            TextColor="White"
                                             FontSize="14"
                                             HeightRequest="50"
                                             Padding="10"
                                             WidthRequest="200"
                                             Margin="0,10,0,0"/>
+                                            
                                 </Grid>
                             </Frame>
                         </VerticalStackLayout>

@@ -38,7 +38,8 @@
                     Clicked="OnAddCarClicked"
                     WidthRequest="200"
                     HorizontalOptions="Center"
-                    Margin="0,20,0,0" />
+                    Margin="0,20,0,0"
+                    BackgroundColor="#7341F5"/>
         </Grid>
     </ScrollView>
 </ContentPage>
